@@ -15,8 +15,8 @@ def stable_shuffle_key(question: str, session_id: str) -> int:
 st.set_page_config(page_title="MSA RAG (Paired Test)", layout="wide")
 st.title("Multiple Sequence Alignment RAG (Paired Comparison)")
 
-n_rewrites = int(getattr(settings, "n_rewrites", 2))
-n_chunks = int(getattr(settings, "n_chunks", 8))
+n_rewrites = int(getattr(settings, "default_rewrites", 5))
+n_chunks = int(getattr(settings, "default_chunks", 4))
 
 if "session_id" not in st.session_state:
     st.session_state["session_id"] = str(uuid.uuid4())
