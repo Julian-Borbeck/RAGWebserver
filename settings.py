@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     )
 
     retrieval_url: AnyUrl = Field(validation_alias="RETRIEVAL_URL")
+    ab_retrieval_url: AnyUrl = Field(validation_alias="AB_RETRIEVAL_URL")
     model_url: AnyUrl = Field(validation_alias="MODEL_URL")
     model_answer: str = Field(validation_alias="MODEL_ANSWER")
     timeout: int = Field(validation_alias="REQUEST_TIMEOUT_S")
