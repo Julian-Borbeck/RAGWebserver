@@ -1,0 +1,13 @@
+name: webserver
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - streamlit
+  - requests
+  - tqdm
+  - scipy
+  - fastapi
+  - pydantic>=2,<3
+  - filelock

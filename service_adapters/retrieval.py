@@ -39,3 +39,15 @@ def retrieval_ab(query, n_rewrites, n_chunks):
         raise ValueError("Retrieval response must contain 'metadata' as lists for both A and B.")
     
     return corpusA, chunksA, metadataA, corpusB, chunksB, metadataB
+
+def retrieval_corpus(query, n_rewrites, n_chunks, corpus):
+
+    payload = {"query": query, "n_rewrites": n_rewrites, "n_chunks": n_chunks,"corpus": corpus}
+    r = requests.post(settings.corpus_retrieval_url, json=payload, timeout=settings.timeout)
+    r.raise_for_status()
+    data = r.json()
+    chunks = data.get("chunks", [])
+    metadata = data.get("metadata", [])
+    if not isinstance(chunks, list) or not isinstance(metadata, list):
+        raise ValueError("Retrieval response must contain 'chunks' and 'metadata' as lists.")
+    return chunks, metadata
